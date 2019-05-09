@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import Provider from './provider'
-import Main from '../components/Main'
+import MyProvider from './provider'
+import Person from '../components/Main'
 import { setUrl } from '../helpers'
 
-const MyContext = React.createContext('ok');
-
 class App extends Component {
+  componentDidMount = () => setUrl();
   render() {
-    return <MyContext.Provider value={'me'}><Main /></MyContext.Provider>
+    return <MyProvider><Person /></MyProvider>
   }
 }
 

@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 
-const AccountContext = React.createContext()
+export const MyContext = React.createContext();
 
-export const AccountConsumer = AccountContext.Consumer
-
-class Provider extends Component {
+class MyProvider extends Component {
   state = {
-    text: 'Look ma, I`m using react context...'
+    num: 100,
   }
-  render () {
+  render() {
+    const addNum = () => this.setState({num: this.state.num +1})
+    const value = {
+      state: this.state,
+      addNum
+    }
+
     return (
-       <AccountContext.Provider value={this.state}>
+      <MyContext.Provider value={value}>
         {this.props.children}
-      </AccountContext.Provider>
+      </MyContext.Provider>
     )
   }
 }
-export default Provider
+
+export default MyProvider
